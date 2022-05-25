@@ -12,6 +12,7 @@ namespace WebApplication_Sprint_1.Models
         public int Id { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime ShippingDate { get; set; }
+        public int CustomerId { get; set; }
         public Customer Customer { get; set; }
 
     }

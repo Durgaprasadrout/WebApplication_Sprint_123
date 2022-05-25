@@ -8,16 +8,12 @@ namespace WebApplication_Sprint_1.Models
 {
     public class Customer
     {
-        public Customer()
-        {
-            Orders = new List<Order>();
-        }
-        [Key]
+        
         public int Id { get; set; }
         public string UserName { get; set; }
         public String Password { get; set; }
         public string Email { get; set; }
         public string DeliveryAddress { get; set; }
-        public List<Order> Orders { get; set; }
+        
     }
 }
