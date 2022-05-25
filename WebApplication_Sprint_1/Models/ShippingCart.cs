@@ -8,6 +8,7 @@ namespace WebApplication_Sprint_1.Models
 {
     public class ShippingCart
     {
+        [Key]
         public int Id { get; set; }
         public int Quantity { get; set; }
         public DateTime DateCreated { get; set; }

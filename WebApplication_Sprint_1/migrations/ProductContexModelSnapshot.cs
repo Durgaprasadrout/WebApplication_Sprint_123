@@ -21,7 +21,7 @@ namespace WebApplication_Sprint_1.Migrations
 
             modelBuilder.Entity("WebApplication_Sprint_1.Models.Category", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -32,7 +32,7 @@ namespace WebApplication_Sprint_1.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
                 });
@@ -119,7 +119,7 @@ namespace WebApplication_Sprint_1.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -191,8 +191,10 @@ namespace WebApplication_Sprint_1.Migrations
             modelBuilder.Entity("WebApplication_Sprint_1.Models.Product", b =>
                 {
                     b.HasOne("WebApplication_Sprint_1.Models.Category", "Category")
-                        .WithMany("Products")
-                        .HasForeignKey("CategoryId");
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category");
                 });
@@ -204,11 +206,6 @@ namespace WebApplication_Sprint_1.Migrations
                         .HasForeignKey("productId");
 
                     b.Navigation("product");
-                });
-
-            modelBuilder.Entity("WebApplication_Sprint_1.Models.Category", b =>
-                {
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("WebApplication_Sprint_1.Models.Customer", b =>

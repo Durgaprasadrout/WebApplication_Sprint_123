@@ -11,7 +11,7 @@ namespace WebApplication_Sprint_1.Models
     
     public class OrderDetail
     {
-        [Key]
+       [Key]
         public int Id { get; set; }
         public Product Product { get; set; }
         public Double UnitCost { get; set; }

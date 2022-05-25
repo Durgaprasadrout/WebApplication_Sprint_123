@@ -46,7 +46,7 @@ namespace WebApplication_Sprint_1.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCategory(int id, Category category)
         {
-            if (id != category.Id)
+            if (id != category.CategoryId)
             {
                 return BadRequest();
             }
@@ -80,7 +80,7 @@ namespace WebApplication_Sprint_1.Controllers
             _context.Categories.Add(category);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCategory", new { id = category.Id }, category);
+            return CreatedAtAction("GetCategory", new { id = category.CategoryId }, category);
         }
 
         // DELETE: api/Categories/5
@@ -101,7 +101,7 @@ namespace WebApplication_Sprint_1.Controllers
 
         private bool CategoryExists(int id)
         {
-            return _context.Categories.Any(e => e.Id == id);
+            return _context.Categories.Any(e => e.CategoryId == id);
         }
     }
 }
